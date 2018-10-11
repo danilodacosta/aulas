@@ -1,26 +1,35 @@
 package application;
 
-import java.util.Date;
+import java.util.Locale;
+import java.util.Scanner;
 
-import entites.Order;
-import entites.enums.OrderStatus;
+import entites.Department;
+import entites.Worker;
+import entites.enums.WorkerLevel;
 
 public class Program {
 
 	public static void main(String[] args) {
 
-		Order order = new Order(1080, new Date() , OrderStatus.PENDING_PAYMENT);
-		System.out.println(order);
-		OrderStatus os1 = OrderStatus.DELIVERED;
-		OrderStatus os2 = OrderStatus.valueOf("DELIVERED");
-	
-		System.out.println(os1);
-		System.out.println(os2);
+		Locale.setDefault(Locale.US);
+		Scanner sc = new Scanner(System.in);
+		System.out.print("Enter department's name: ");
+		
+		String departamentName = sc.nextLine();
+		System.out.print("Enter Worker data:");
+		
+		System.out.print("Name:");
+		String workName = sc.nextLine();
+		System.out.print("Level:");
+		String workLevel = sc.nextLine();
+		System.out.print("Base salary :");
+		double baseSalary = sc.nextDouble();
+		
+		Worker worker = new Worker(workName,WorkerLevel.valueOf(workLevel), baseSalary, new Department(departamentName));
 		
 		
-	
+		
+		sc.close();
 	}
 
 }
-
-
